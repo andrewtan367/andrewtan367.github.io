@@ -16,8 +16,14 @@ window.addEventListener("scroll", () => {
 const altrnateStyles = document.querySelectorAll(".alternate-style");
 
 function setActiveStyle(color) {
+  localStorage.setItem("color", color);
+
+  changeColor();
+}
+
+function changeColor() {
   altrnateStyles.forEach((style) => {
-    if (color === style.getAttribute("title")) {
+    if (localStorage.getItem("color") === style.getAttribute("title")) {
       style.removeAttribute("disabled");
     } else {
       style.setAttribute("disabled", "true");
@@ -25,19 +31,44 @@ function setActiveStyle(color) {
   });
 }
 
+// cek apakah 'color' key exists di local storage
+if (localStorage.getItem("color") !== null) {
+  changeColor();
+}
+
 // ------------------------- theme light and dark mode ---------------------
 const dayNight = document.querySelector(".day-night");
 
 dayNight.addEventListener("click", () => {
-  dayNight.querySelector("i").classList.toggle("fa-sun");
-  dayNight.querySelector("i").classList.toggle("fa-moon");
   document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+  updateIcon();
 });
 
-window.addEventListener("load", () => {
+function themeMode() {
+  // cek apakah 'theme' key exists di local storage
+  if (localStorage.getItem("theme") !== null) {
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.remove("dark");
+    } else {
+      document.body.classList.add("dark");
+    }
+  }
+  updateIcon();
+}
+themeMode();
+
+function updateIcon() {
   if (document.body.classList.contains("dark")) {
+    dayNight.querySelector("i").classList.remove("fa-moon");
     dayNight.querySelector("i").classList.add("fa-sun");
   } else {
+    dayNight.querySelector("i").classList.remove("fa-sun");
     dayNight.querySelector("i").classList.add("fa-moon");
   }
-});
+}
