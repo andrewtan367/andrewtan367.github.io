@@ -1377,6 +1377,7 @@ img {
 
 .portfolio-popup .info ul li span {
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 .portfolio-popup .info ul li a {
