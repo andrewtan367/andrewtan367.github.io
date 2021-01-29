@@ -1184,6 +1184,15 @@ img {
       line-height: 26px;
       margin: 0;
     }
+
+    a {
+      color: var(--skin-color);
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .info {
@@ -1206,7 +1215,6 @@ img {
 
         span {
           font-weight: 400;
-          text-transform: uppercase;
         }
 
         a {

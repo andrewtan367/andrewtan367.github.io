@@ -1354,6 +1354,15 @@ img {
   margin: 0;
 }
 
+.portfolio-popup .description a {
+  color: var(--skin-color);
+  font-weight: 600;
+}
+
+.portfolio-popup .description a:hover {
+  text-decoration: underline;
+}
+
 .portfolio-popup .info {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 35%;
@@ -1377,7 +1386,6 @@ img {
 
 .portfolio-popup .info ul li span {
   font-weight: 400;
-  text-transform: uppercase;
 }
 
 .portfolio-popup .info ul li a {
